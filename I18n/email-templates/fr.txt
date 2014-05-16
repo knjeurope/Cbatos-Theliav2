@@ -1,0 +1,25 @@
+###################################
+{$METHOD_PAID} {$ETP}
+{$MESSAGE_HAUT_TICKET_ATOS}
+A{$MERCHANT}
+CB - @auto {$autorisation}
+{$LE} {$DATE_TRANS} {$A} {$TIME_TRANS}
+{$STORE_NAME}
+{$STORE_LINE1}
+{$STORE_CP}
+{$CB_CRYPTE}
+{$CERTIFICAT}
+{$FIN} --/--/--
+100 {$TRANS_ID} 01 c
+{$MONT} :
+{$MONTANT_TRANS_EUR}
+{$INFO} :
+{$MONTANT_TRANS_FRF}
+{$MONTANT_TRANS_USD}
+@DEBIT
+{$MESSAGE_TICKET_CLIENT}
+{$CONSERVE}
+{$BYE}
+###################################
+Id : {$order_ref} / {$order_id}
+###################################
