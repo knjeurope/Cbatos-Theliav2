@@ -19,7 +19,7 @@ $error_message="";
             $vform = $this->validateForm($form);
 
                 $conf->setCBATOSMERCHANTID($vform->get('MerchantId')->getData())
-				->setCBATOSSIPSSOLUTIONS($vform->get('SipsSolutions')->getData())
+                ->setCBATOSSIPSSOLUTIONS($vform->get('SipsSolutions')->getData())
              ->setCBATOSURLRETOUR($vform->get('Urlretour')->getData())
 ->setCBATOSURLAUTOMATIC($vform->get('Urlautomatic')->getData())
 ->setCBATOSCAPTUREDAYS($vform->get('Capturedays')->getData())

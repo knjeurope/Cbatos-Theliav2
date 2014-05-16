@@ -4,14 +4,9 @@ namespace Cbatos;
 use Cbatos\Model\Config;
 use Thelia\Core\Template\TemplateDefinition;
 use Thelia\Model\Base\Template;
-use Thelia\Install\Database;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
 use Thelia\Core\HttpFoundation\Response;
-use Thelia\Core\Translation\Translator;
-use Thelia\Model\Base\CountryQuery;
-use Thelia\Model\ConfigQuery;
-use Thelia\Model\LangQuery;
 use Thelia\Model\Message;
 use Thelia\Model\MessageQuery;
 use Thelia\Model\ModuleImageQuery;
@@ -27,8 +22,6 @@ const CONFIRMATION_MESSAGE_NAME = 'atos_payment_confirmation';
     protected $_sUsableKey;
 
     protected $config;
-
- 
 
 public function postActivation(ConnectionInterface $con = null)
 {
@@ -58,7 +51,7 @@ if (null === MessageQuery::create()->findOneByName(self::CONFIRMATION_MESSAGE_NA
                 ->save()
             ;
         }
-		
+
 /* insert image module */
 $module = $this->getModuleModel();
 if (ModuleImageQuery::create()->filterByModule($module)->count() == 0) {
@@ -69,12 +62,12 @@ $this->deployImageFolder($module, sprintf('%s/images', __DIR__), $con);
  public function destroy(ConnectionInterface $con = null, $deleteModuleData = false)
     {
         // Delete config table and messages if required
-		// update 15 may 2014
+        // update 15 may 2014
         if ($deleteModuleData) {
             MessageQuery::create()->findOneByName(self::CONFIRMATION_MESSAGE_NAME)->delete();
         }
     }
-	
+
 function pay(Order $order)
 {
 $c = Config::read(Cbatos::JSON_CONFIG_PATH);
@@ -101,25 +94,16 @@ $result=exec("$path_bin $parm");
 $tableau = explode ("!", "$result");
 $code = $tableau[1];
 
-
 if ($c["CBATOS_MODEDEBUG"] == "2") { $vars["ERRORATOS"] = $tableau[2];} else {
 
 $vars["MESSAGE"] = $tableau[3];
 }
 
+$vars["CODEATOS"] = $tableau[1];
 
-$vars["CODEATOS"] = $tableau[1]; 
-
- 
-if (isset($error) && isset($error) ) 
-{ $erroratos = "<B>Error to connect API</B><br>Request not found :  $path_bin"; } 
-elseif ($code != 0) { $erroratos = "<b>Error in Api request</b><br><br>Message Atos : $error <br>"; } 
-else {    }
-
-
+if (isset($error) && isset($error) ) { $erroratos = "<B>Error to connect API</B><br>Request not found :  $path_bin"; } elseif ($code != 0) { $erroratos = "<b>Error in Api request</b><br><br>Message Atos : $error <br>"; } else {    }
 
 //Call Template Page for display Form Atos
-
 
 $parser = $this->container->get("thelia.parser");
 $parser->setTemplateDefinition(
@@ -127,8 +111,9 @@ $parser->setTemplateDefinition(
                 '01',
                 TemplateDefinition::FRONT_OFFICE
            )
-       );		
+       );
  $render = $parser->render("atos.html",$vars);
+
  return Response::create($render);
 
 }
@@ -184,8 +169,6 @@ public static function harmonise($value, $type, $len)
 *
 * @return boolean
 */
-
-
 
 // Modify Update 15 May 2014 //
 // Capable THELIA v2.0.1 //

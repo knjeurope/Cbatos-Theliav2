@@ -54,9 +54,8 @@ class ConfigureCbatos extends BaseForm
                     new NotBlank()
                 )
             ))
-			
-			
-			->add('SipsSolutions', 'text', array(
+
+            ->add('SipsSolutions', 'text', array(
                                 'label' => Translator::getInstance()->trans('SipsSolutions'),
                                 'label_attr' => array(
                                         'for' => 'SipsSolutions'
@@ -66,8 +65,7 @@ class ConfigureCbatos extends BaseForm
                                         new NotBlank()
                                 )
                         ))
-			
-			
+
             ->add('Urlretour', 'text', array(
                                 'label' => Translator::getInstance()->trans('Urlretour'),
                                 'label_attr' => array(

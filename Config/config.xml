@@ -6,16 +6,16 @@
 
     <loops>
 <loop name="cbatos.check.rights" class="Cbatos\Loop\CheckRightsLoop" />
- 
+
     </loops>
 
     <forms>
 <form name="cbatos.configure" class="Cbatos\Form\ConfigureCbatos"/>
- 
+
     </forms>
 
     <commands>
- 
+
     </commands>
 
 <services>
@@ -26,8 +26,8 @@
             <argument type="service" id="mailer"/>
             <tag name="kernel.event_subscriber"/>
         </service>
-		
-		
-        
+
+
+
     </services>
 </config>

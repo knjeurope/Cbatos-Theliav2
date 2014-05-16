@@ -69,8 +69,6 @@ class SendConfirmationEmail extends BaseAction implements EventSubscriberInterfa
                     throw new \Exception(sprintf("Failed to load message '%s'.", Payzen::CONFIRMATION_MESSAGE_NAME));
                 }
 
-
-
                 $order = $event->getOrder();
                 $customer = $order->getCustomer();
 
@@ -132,7 +130,6 @@ $this->parser->assign('DATE_TRANS', $datetrans[0]."/".$datetrans[2]."/".$datetra
 $this->parser->assign('TIME_TRANS', $timetrans[0].":".$timetrans[1].":".$timetrans[2]);
 $this->parser->assign('card', $transac["CARD"]);
 
-
                 $this->parser->assign('order_id', $order->getId());
                 $this->parser->assign('order_ref', $order->getRef());
 
@@ -151,8 +148,7 @@ $this->parser->assign('card', $transac["CARD"]);
 
                 Tlog::getInstance()->debug("Confirmation email sent to customer ".$customer->getEmail());
             }
-        }
-        else {
+        } else {
             Tlog::getInstance()->debug("No confirmation email sent (order not paid, or not the proper payement module.");
         }
     }

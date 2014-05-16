@@ -13,7 +13,7 @@ interface ConfigInterface
      * @return Cbatos\Model\ConfigInterface
      */
     public function setCBATOSMERCHANTID($CBATOS_MERCHANTID);
-	public function setCBATOSSIPSSOLUTIONS($CBATOS_SIPSSOLUTIONS);
+    public function setCBATOSSIPSSOLUTIONS($CBATOS_SIPSSOLUTIONS);
     public function setCBATOSURLRETOUR($CBATOS_URLRETOUR);
  public function setCBATOSURLAUTOMATIC($CBATOS_URLAUTOMATIC);
  public function setCBATOSCAPTUREDAYS($CBATOS_CAPTUREDAYS);

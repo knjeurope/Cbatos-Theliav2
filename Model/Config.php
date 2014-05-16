@@ -77,8 +77,8 @@ class Config implements ConfigInterface
 
         return $this;
     }
-	
-	public function setCBATOSSIPSSOLUTIONS($CBATOS_SIPSSOLUTIONS)
+
+    public function setCBATOSSIPSSOLUTIONS($CBATOS_SIPSSOLUTIONS)
 {
 $this->CBATOS_SIPSSOLUTIONS = $CBATOS_SIPSSOLUTIONS;
 return $this;
