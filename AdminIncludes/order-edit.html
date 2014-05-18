@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+<div class="panel-heading">{intl l="Clone Receipt Ticket Payment Credit card :" d='cbatos.ai'}</div>
+
+<div class="panel-body">
+  <table width="895" border="0" class="table table-bordered">
+    <tr>
+      <td class="success">{intl l="Transaction ID" d='cbatos.ai'}</td>
+      <td>{intl l="Auto charge" d='cbatos.ai'}</td>
+      <td class="success">{intl l="Date" d='cbatos.ai'}</td>
+      <td >{intl l="Time" d='cbatos.ai'}</td>
+      <td class="success">{intl l="Card number" d='cbatos.ai'}</td>
+      <td>{intl l="Amount" d='cbatos.ai'}</td>
+      <td class="success">{intl l="Ref Certificat" d='cbatos.ai'}</td>
+      <td>{intl l="State" d='cbatos.ai'}</td>
+    </tr>
+    {loop type="atostransac" name="duplicata_facturette" orderid=$ID limit="1"}
+    <tr>
+      <td class="success">{$TRANS_ID}</td>
+      <td>{$autorisation}</td>
+      <td class="success">{$DATE_TRANS}</td>
+      <td>{$TIME_TRANS}</td>
+      <td class="success">{$CB_CRYPTE}</td>
+      <td>{$MONTANT_TRANS_EUR}
+      <br /> {intl l="Convert amount" d='cbatos.ai'} :<br />
+    {$MONTANT_TRANS_FRF}<br />
+    {$MONTANT_TRANS_USD}<br /></td>
+      <td class="success">{$CERTIFICAT}</td>
+      <td>@DEBIT</td>
+    </tr>
+    {/loop}
+  </table>
+</div>
+    </div>

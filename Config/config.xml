@@ -6,28 +6,22 @@
 
     <loops>
 <loop name="cbatos.check.rights" class="Cbatos\Loop\CheckRightsLoop" />
-
+<loop name="atostransac" class="Cbatos\Loop\atostransaction" />
     </loops>
 
     <forms>
 <form name="cbatos.configure" class="Cbatos\Form\ConfigureCbatos"/>
-
     </forms>
 
     <commands>
-
     </commands>
 
 <services>
-
 
  <service id="send.cbatos.mail" class="Cbatos\Listener\SendConfirmationEmail" scope="request">
             <argument type="service" id="thelia.parser" />
             <argument type="service" id="mailer"/>
             <tag name="kernel.event_subscriber"/>
         </service>
-
-
-
     </services>
 </config>

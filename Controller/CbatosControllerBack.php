@@ -81,6 +81,8 @@ else {
 
 if ($response_code == "00") {
 $info = Translator::getInstance()->trans("Your transaction is accept");
+
+
 //$event = new CartEvent($this->getSession()->getCart());
 //$this->dispatch(TheliaEvents::CART_CLEAR, $event);
 } else {
@@ -90,8 +92,8 @@ $info = Translator::getInstance()->trans("Your transaction is declined");
 return $this->render("result",
 array(
 "order_id"=>$order_id,
-"msg"=>$info,
-"codebanqueb"=>$tradcode
+"msg"=>$info
+//"codebanqueb"=>$tradcode
 ));
 }
 }

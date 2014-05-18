@@ -12,7 +12,7 @@ use Thelia\Model\MessageQuery;
 use Thelia\Model\ModuleImageQuery;
 use Thelia\Model\Order;
 use Thelia\Module\AbstractPaymentModule;
-
+use Thelia\Model\Base\ModuleQuery;
 class Cbatos extends AbstractPaymentModule
 {
 const JSON_CONFIG_PATH = "/Config/config.json";

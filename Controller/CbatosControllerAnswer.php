@@ -18,7 +18,7 @@ protected $config;
 
 function resp()
 {
-$c = Config::read(Cbatos::JSON_CONFIG_PATH);
+$c = AtosTransactions::read(Cbatos::JSON_CONFIG_PATH);
 $pathinstallmodule = $c["CBATOS_PATHBIN"];
 $date = $_POST['DATA'];
 $message="message=$date";
@@ -32,24 +32,25 @@ $response_code = $tableau[11];
 $techno = "EMTPV";
  //on enregistre la trace de la transaction dans un fichier
 //Nom du fichier Order-IDdecommande-Idduclient.Json
+ 
 $order_id = $tableau['27'];
 $conf = new AtosTransactions();
 $conf->setMARCHAND($tableau['3'])
-->setDATE("$tableau[10]")
-->setTIME("$tableau[9]")
-->setCARD("$tableau[15]")
-->setAUTO("$tableau[13]")
-->setAMOUNT("$tableau[5]")
-->setREF("$tableau[6]")
-->setCURRENCY("$tableau[14]")
-->setIPCUSTOMER("$tableau[29]")
-->setEMAILCUSTOMER("$tableau[28]")
-->setORDERID("$tableau[27]")
-->setCUSTOMERID("$tableau[26]")
-->setBANKRESPONSESCODE("$tableau[18]")
-->setCERTIFICAT("$tableau[12]")
-->setETP("$techno")
-->setCVVCODE("$tableau[17]")
+->setDATE($tableau[10])
+->setTIME($tableau[9])
+->setCARD($tableau[15])
+->setAUTO($tableau[13])
+->setAMOUNT($tableau[5])
+->setREF($tableau[6])
+->setCURRENCY($tableau[14])
+->setIPCUSTOMER($tableau[29])
+->setEMAILCUSTOMER($tableau[28])
+->setORDERID($tableau[27])
+->setCUSTOMERID($tableau[26])
+->setBANKRESPONSESCODE($tableau[18])
+->setCERTIFICAT($tableau[12])
+->setETP($techno)
+->setCVVCODE($tableau[17])
 
 ->write("/Transactions/Order-".$order_id."-".$tableau[26].".json")
 ;
