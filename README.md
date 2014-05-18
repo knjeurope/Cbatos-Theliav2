@@ -1,3 +1,9 @@
+-- Attention !! Avant d'installer ce module assurez vous que votre hébergeur autorise la fonction EXEC() sans quoi vous ne pourrez pas faire fonctionner le script ATOS
+
+-- WARNING !! Before you install this module, pls check your hosting provider if function EXEC() is activate if not you can not use Atos SIPS
+
+
+
 ﻿### Module de paiement Carte Bancaire ATOS for Thelia V2
 ######Compatible Version 2.0.1 - Mise à jour le 15 Mai 2014######
 
