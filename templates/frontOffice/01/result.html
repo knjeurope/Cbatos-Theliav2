@@ -8,14 +8,14 @@
 {* Page Title *}
 {block name='no-return-functions' append}
     {loop name="product.seo.title" type="product" id="{product attr="id"}"}
-    {$page_title = {intl l="Payment by Credit cards"}}
+    {$page_title = {intl l="Payment by Credit cards" d='cbatos.fo'}}
     {/loop}
 {/block}
 
 {* Breadcrumb *}
 {block name='no-return-functions' append}
 {$breadcrumbs = [
-['title' => {intl l="Redirect to bank service"}]
+['title' => {intl l="Redirect to bank service" d='cbatos.fo'}]
 ]}
 {/block}
 
@@ -40,22 +40,22 @@
 <center><H2 style="color:red;">{$msg}</h2></center>
 <br>
 <br>
-<span style="color:red;">{intl l="Your bank avec declined your transaction because said"} : <b>{$codebanqueb}</b></span>
+<span style="color:red;">{intl l="Your bank avec declined your transaction because said" d='cbatos.fo'} : <b>{$codebanqueb}</b></span>
 <br>
 <br>
-<b>{intl l="Please try again or call your customer sale to 090909000009"}</b>
+<b>{intl l="Please try again or call your customer sale to 090909000009" d='cbatos.fo'}</b>
 {/if}
 {if !$codebanqueb}
 <center><h2 style="color:green;">{$msg}</h2></center>
 <br><br><br>
 
 {loop name="badresponseorder" type="order" id={$order_id}}
-{intl l="Your order is register"}<br>
-{intl l="Your order number is :"} {$REF}
+{intl l="Your order is register" d='cbatos.fo'}<br>
+{intl l="Your order number is :" d='cbatos.fo'} {$REF}
             {/loop}
 <br>
 <br>
-{intl l="Thanks your for"}
+{intl l="Thanks your for" d='cbatos.fo'}
 {/if}
 
 </div></section>

@@ -23,7 +23,6 @@ echo Translator::getInstance()->trans("Access is denied");
 exit;
 }
 
-//lecture du fichier de configuration juste recuperer le chemin absolu que vous aurez indiquer dans la config thelia
 $c = Config::read(Cbatos::JSON_CONFIG_PATH);
 $pathinstallmodule = $c["CBATOS_PATHBIN"];
 $message="message=$date";
@@ -39,7 +38,6 @@ $response_code = $tableau[11];
 $customer_id = $tableau[26];
 $order_id = $tableau[27];
 
-//on fait la traduction des messages code pour que le client beneficie de linformation
 if ($response_code == "02") { $tradcode = Translator::getInstance()->trans("Contact your banque"); }
 if ($response_code == "03") { $tradcode = Translator::getInstance()->trans("Invalid contract"); }
 if ($response_code == "04") { $tradcode = Translator::getInstance()->trans("Hold card"); }
@@ -60,31 +58,25 @@ $order_id=(int) $order_id;
 
 $order = OrderQuery::create()->findPk($order_id);
 
-// on regarde que si aucun code ou aucune erreur, cela indique
-// une erreur dans la recherche de lexec surement introuvable
 if (( $code == "" ) && ( $error == "" ) ) {
 $errormsg = "Error to call API RESPONSE ATOS<br>Execitable not found".$path_bin;
 echo $errormsg;
 }
-// exec trouve mais erreur dans les prerequis
-// on affiche
+
 else if ($code != 0) {
 $errormsg = "Error in Call to API ATOS RESPONSE <br><br> Error :".$error;
 echo $errormsg;
 }
-//ok le responses est valable on execute
 else {
 
 }
 
-//on defini les valeurs
+
 
 if ($response_code == "00") {
 $info = Translator::getInstance()->trans("Your transaction is accept");
 
 
-//$event = new CartEvent($this->getSession()->getCart());
-//$this->dispatch(TheliaEvents::CART_CLEAR, $event);
 } else {
 $info = Translator::getInstance()->trans("Your transaction is declined");
 }
@@ -93,7 +85,6 @@ return $this->render("result",
 array(
 "order_id"=>$order_id,
 "msg"=>$info
-//"codebanqueb"=>$tradcode
 ));
 }
 }

@@ -66,7 +66,7 @@ class SendConfirmationEmail extends BaseAction implements EventSubscriberInterfa
                     ->findOne();
 
                 if (false === $message) {
-                    throw new \Exception(sprintf("Failed to load message '%s'.", Payzen::CONFIRMATION_MESSAGE_NAME));
+                    throw new \Exception(sprintf("Failed to load message '%s'.", Cbatos::CONFIRMATION_MESSAGE_NAME));
                 }
 
                 $order = $event->getOrder();

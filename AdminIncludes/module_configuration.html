@@ -2,12 +2,12 @@
     <!-- Errors -->
     {loop name="checkrights" type="cbatos.check.rights"}
     <div class="alert alert-danger">
-        <p>{$ERRMES}  {$ERRFILE} | {intl l="Please change the access rights"}.</p>
+        <p>{$ERRMES}  {$ERRFILE} | {intl l="Please change the access rights" d='cbatos.ai'}.</p>
     </div>
     {/loop}
 </div>
 {elseloop rel="checkrights"}
-<h2>{intl l="Configuration de Atos"}</h2>
+<h2>{intl l="Atos setup" d='cbatos.ai'}</h2>
 <div class="form-container general-block-decorator">
 {form name="cbatos.configure"}
 	<form action="{url path="/admin/module/Cbatos/saveconfig"}" method="POST" {form_enctype form=$form}>
@@ -31,8 +31,8 @@
 </label>
 
 <select name="{$name}" id="{$label_attr.for}" class="form-control">
-  <option value="etransactions" {if $value eq "etransactions"}selected="selected"{/if}>Crédit agricole - e Transactions </option>
-   <option value="sherlocks" {if $value eq "sherlocks"}selected="selected"{/if}>Lcl Crédit Lyonnais - Sherlocks </option>
+  <option value="etransactions" {if $value eq "etransactions"}selected="selected"{/if}>{intl l="Crédit agricole - e Transactions" d='cbatos.ai'} </option>
+   <option value="sherlocks" {if $value eq "sherlocks"}selected="selected"{/if}>{intl l="Lcl Crédit Lyonnais - Sherlocks" d='cbatos.ai'} </option>
 
 
 </select>
@@ -45,7 +45,7 @@
 	<label for="{$label_attr.for}" class="control-label">
 {$label} :
 </label>
-	    <input type="text" id="{$label_attr.for}" name="{$name}" value="{$value}" placeholder="{intl l="Url return back Atos"}" class="form-control" />
+	    <input type="text" id="{$label_attr.for}" name="{$name}" value="{$value}" placeholder="{intl l="Url return back Atos" d='cbatos.ai'}" class="form-control" />
 </div>	
 {/form_field}
 
@@ -54,7 +54,7 @@
         <label for="{$label_attr.for}" class="control-label">
 {$label} :
 </label>
-            <input type="text" id="{$label_attr.for}" name="{$name}" value="{$value}" placeholder="{intl l="Url return automatic Atos"}" class="form-control" />
+            <input type="text" id="{$label_attr.for}" name="{$name}" value="{$value}" placeholder="{intl l="Url return automatic Atos" d='cbatos.ai'}" class="form-control" />
 </div>
 {/form_field}
 
@@ -65,12 +65,12 @@
 </label>
 
 <select name="{$name}" id="{$label_attr.for}" class="form-control">
-  <option value="00" {if $value eq "00"}selected="selected"{/if}>{intl l="Immediate charge"}</option>
-  <option value="1" {if $value eq "1"}selected="selected"{/if}>1 {intl l="day"}</option>
-  <option value="2" {if $value eq "2"}selected="selected"{/if}>2 {intl l="days"}</option>
-<option value="3" {if $value eq "3"}selected="selected"{/if}>3 {intl l="days"}</option>
-<option value="4" {if $value eq "4"}selected="selected"{/if}>4 {intl l="days"}</option>
-<option value="5" {if $value eq "5"}selected="selected"{/if}>5 {intl l="days"}</option>
+  <option value="00" {if $value eq "00"}selected="selected"{/if}>{intl l="Immediate charge" d='cbatos.ai'}</option>
+  <option value="1" {if $value eq "1"}selected="selected"{/if}>1 {intl l="day" d='cbatos.ai'}</option>
+  <option value="2" {if $value eq "2"}selected="selected"{/if}>2 {intl l="days" d='cbatos.ai'}</option>
+<option value="3" {if $value eq "3"}selected="selected"{/if}>3 {intl l="days" d='cbatos.ai'}</option>
+<option value="4" {if $value eq "4"}selected="selected"{/if}>4 {intl l="days" d='cbatos.ai'}</option>
+<option value="5" {if $value eq "5"}selected="selected"{/if}>5 {intl l="days" d='cbatos.ai'}</option>
 
 </select>
 </div>
@@ -83,8 +83,8 @@
 </label>
 
 <select name="{$name}" id="{$label_attr.for}" class="form-control">
-  <option value="978" {if $value eq "978"}selected="selected"{/if}>{intl l="EUR"}</option>
-  <option value="840" {if $value eq "840"}selected="selected"{/if}>{intl l="USD"}</option>
+  <option value="978" {if $value eq "978"}selected="selected"{/if}>{intl l="EUR" d='cbatos.ai'}</option>
+  <option value="840" {if $value eq "840"}selected="selected"{/if}>{intl l="USD" d='cbatos.ai'}</option>
 
 </select>
 </div>
@@ -100,8 +100,8 @@
 </label>
 
 <select name="{$name}" id="{$label_attr.for}" class="form-control">
-  <option value="1" {if $value eq "1"}selected="selected"{/if}>{intl l="NON"}</option>
-  <option value="2" {if $value eq "2"}selected="selected"{/if}>{intl l="OUI"}</option>
+  <option value="1" {if $value eq "1"}selected="selected"{/if}>{intl l="NO" d='cbatos.ai'}</option>
+  <option value="2" {if $value eq "2"}selected="selected"{/if}>{intl l="YES" d='cbatos.ai'}</option>
 
 </select>
 </div>
@@ -115,8 +115,8 @@
 </label>
 
 <select name="{$name}" id="{$label_attr.for}" class="form-control">
-  <option value="1" {if $value eq "1"}selected="selected"{/if}>{intl l="NON"}</option>
-  <option value="2" {if $value eq "2"}selected="selected"{/if}>{intl l="OUI"}</option>
+  <option value="1" {if $value eq "1"}selected="selected"{/if}>{intl l="NO" d='cbatos.ai'}</option>
+  <option value="2" {if $value eq "2"}selected="selected"{/if}>{intl l="YES" d='cbatos.ai'}</option>
 
 </select>
 </div>
@@ -130,8 +130,8 @@
 </label>
 
 <select name="{$name}" id="{$label_attr.for}" class="form-control">
-  <option value="1" {if $value eq "1"}selected="selected"{/if}>{intl l="NON"}</option>
-  <option value="2" {if $value eq "2"}selected="selected"{/if}>{intl l="OUI"}</option>
+  <option value="1" {if $value eq "1"}selected="selected"{/if}>{intl l="NO" d='cbatos.ai'}</option>
+  <option value="2" {if $value eq "2"}selected="selected"{/if}>{intl l="YES" d='cbatos.ai'}</option>
 
 </select>
 </div>
@@ -143,7 +143,7 @@
                 {$label} :
             </label>
 
-            <input type="text" id="{$label_attr.for}" name="{$name}" value="{$value}" placeholder="{intl l="Your Path File Bin Request and Responses"}" class="form-control" />
+            <input type="text" id="{$label_attr.for}" name="{$name}" value="{$value}" placeholder="{intl l="Your Path File Bin Request and Responses" d='cbatos.ai'}" class="form-control" />
         </div>
         {/form_field}
 
@@ -155,8 +155,8 @@
 </label>
 
 <select name="{$name}" id="{$label_attr.for}" class="form-control">
-  <option value="1" {if $value eq "1"}selected="selected"{/if}>{intl l="NON"}</option>
-  <option value="2" {if $value eq "2"}selected="selected"{/if}>{intl l="OUI"}</option>
+  <option value="1" {if $value eq "1"}selected="selected"{/if}>{intl l="NO" d='cbatos.ai'}</option>
+  <option value="2" {if $value eq "2"}selected="selected"{/if}>{intl l="YES" d='cbatos.ai'}</option>
 
 </select>
 </div>
@@ -166,7 +166,7 @@
 
 
 		<div class="form-group">
-			<button type="submit" name="save_mode" value="stay" class="form-submit-button btn btn-sm btn-default btn-success" title="{intl l="Save"}">{intl l="Save"} <span class="glyphicon glyphicon-ok"></span></button>
+			<button type="submit" name="save_mode" value="stay" class="form-submit-button btn btn-sm btn-default btn-success" title="{intl l="Save" d='cbatos.ai'}">{intl l="Save"} <span class="glyphicon glyphicon-ok"></span></button>
 		</div>
 	</form>
 {/form}

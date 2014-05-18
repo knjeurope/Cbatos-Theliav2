@@ -5,13 +5,13 @@
 * Page Title *}
 {block name='no-return-functions' append}
     {loop name="product.seo.title" type="product" id="{product attr="id"}"}
-    {$page_title = {intl l="Payment by Credit cards"}}
+    {$page_title = {intl l="Payment by Credit cards" d='cbatos.fo'}}
     {/loop}
 {/block}
 {* Breadcrumb *}
 {block name='no-return-functions' append}
     {$breadcrumbs = [
-        ['title' => {intl l="Your method of the payment"}, 'url'=>{url path="/cbatos/paid"}]
+        ['title' => {intl l="Your method of the payment" d='cbatos.fo'}, 'url'=>{url path="/cbatos/paid"}]
     ]}
 {/block}
 
