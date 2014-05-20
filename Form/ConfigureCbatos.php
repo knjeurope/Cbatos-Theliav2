@@ -66,27 +66,9 @@ class ConfigureCbatos extends BaseForm
                                 )
                         ))
 
-            ->add('Urlretour', 'text', array(
-                                'label' => Translator::getInstance()->trans('Urlretour'),
-                                'label_attr' => array(
-                                        'for' => 'Urlretour'
-                                ),
-                'data' => (null === $values ?'':$values["CBATOS_URLRETOUR"]),
-                'constraints' => array(
-                                        new NotBlank()
-                                )
-                        ))
+             
 
-     ->add('Urlautomatic', 'text', array(
-                                'label' => Translator::getInstance()->trans('Urlautomatic'),
-                                'label_attr' => array(
-                                        'for' => 'Urlautomatic'
-                                ),
-                'data' => (null === $values ?'':$values["CBATOS_URLAUTOMATIC"]),
-                'constraints' => array(
-                                        new NotBlank()
-                                )
-                        ))
+    
 
 ->add('Capturedays', 'text', array(
                                 'label' => Translator::getInstance()->trans('Capturedays'),
@@ -121,16 +103,7 @@ class ConfigureCbatos extends BaseForm
                                 )
                         ))
 
-->add('Customerid', 'text', array(
-                                'label' => Translator::getInstance()->trans('Customerid'),
-                                'label_attr' => array(
-                                        'for' => 'Customerid'
-                                ),
-                'data' => (null === $values ?'':$values["CBATOS_CUSTOMERID"]),
-                'constraints' => array(
-                                        new NotBlank()
-                                )
-                        ))
+ 
 
 ->add('Customerip', 'text', array(
                                 'label' => Translator::getInstance()->trans('Customerip'),
@@ -143,16 +116,7 @@ class ConfigureCbatos extends BaseForm
                                 )
                         ))
 
-->add('PathBin', 'text', array(
-                                'label' => Translator::getInstance()->trans('PathBin'),
-                                'label_attr' => array(
-                                        'for' => 'PathBin'
-                                ),
-                'data' => (null === $values ?'':$values["CBATOS_PATHBIN"]),
-                'constraints' => array(
-                                        new NotBlank()
-                                )
-                        ))
+ 
 
 ->add('Modedebug', 'text', array(
                                 'label' => Translator::getInstance()->trans('Modedebug'),

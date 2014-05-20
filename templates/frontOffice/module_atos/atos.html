@@ -1,0 +1,32 @@
+       {extends file="layout.tpl"}
+{block name="main-content"} 
+
+<table border="1" align="center" cellspacing="0" class="table" style=" width:500px;">
+  <tr>
+    <td width="544" bgcolor="#CCCCCC"><h3>{intl l="Payment by credit card" d="cbatos.fo.module_atos"}</h3></td>
+  </tr>
+  <tr>
+    <td>
+    
+    
+    {loop type="order" name="payementatos" id="$order_id"}
+<table width="100%" border="0" class="table">
+      <tr>
+        <td bgcolor="#EEEEEE">{intl l="Order Id" d="cbatos.fo.module_atos"} : </td>
+        <td bgcolor="#EEEEEE">{$REF} </td>
+      </tr>
+      <tr>
+        <td bgcolor="#EEEEEE">{intl l="Total for paid" d="cbatos.fo.module_atos"} : </td>
+        <td bgcolor="#EEEEEE">{$TOTAL_TAXED_AMOUNT|number_format:2:",":"."} {loop type="currency" name="order-currency" id=$CURRENCY}{$SYMBOL}{/loop}</td>
+      </tr>
+    </table>
+{/loop}
+      {$ERRORATOS nofilter}
+{$MESSAGE nofilter} </td>
+  </tr>
+  <tr>
+    <td>{intl l="You will be redirected to the secure server of our bank, in order to make your payment by credit card, once completed you will immediately confirm your order you can print." d="cbatos.fo.module_atos"}</td>
+  </tr>
+</table>
+{/block}
+  

@@ -19,14 +19,13 @@ function save()
         $vform = $this->validateForm($form);
 		$conf->setCBATOSMERCHANTID($vform->get('MerchantId')->getData())
                 ->setCBATOSSIPSSOLUTIONS($vform->get('SipsSolutions')->getData())
-             	->setCBATOSURLRETOUR($vform->get('Urlretour')->getData())
-				->setCBATOSURLAUTOMATIC($vform->get('Urlautomatic')->getData())
+             	 
 				->setCBATOSCAPTUREDAYS($vform->get('Capturedays')->getData())
 				->setCBATOSDEVISES($vform->get('Devises')->getData())
 				->setCBATOSCUSTOMERMAIL($vform->get('Customermail')->getData())
-				->setCBATOSCUSTOMERID($vform->get('Customerid')->getData())
+				 
 				->setCBATOSCUSTOMERIP($vform->get('Customerip')->getData())
-				->setCBATOSPATHBIN($vform->get('PathBin')->getData())
+				 
 				->setCBATOSMODEDEBUG($vform->get('Modedebug')->getData())
                 ->write(Cbatos::JSON_CONFIG_PATH)
                 ;

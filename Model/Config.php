@@ -8,8 +8,7 @@ use Thelia\Core\Translation\Translator;
 class Config implements ConfigInterface
 {
     protected $CBATOS_MERCHANTID=null;
-    protected $CBATOS_URLRETOUR=null;
-
+    
     public function __construct()
     {
         $config=null;
@@ -84,17 +83,9 @@ $this->CBATOS_SIPSSOLUTIONS = $CBATOS_SIPSSOLUTIONS;
 return $this;
 }
 
- public function setCBATOSURLRETOUR($CBATOS_URLRETOUR)
-{
-$this->CBATOS_URLRETOUR = $CBATOS_URLRETOUR;
-return $this;
-}
+  
 
- public function setCBATOSURLAUTOMATIC($CBATOS_URLAUTOMATIC)
-{
-$this->CBATOS_URLAUTOMATIC = $CBATOS_URLAUTOMATIC;
-return $this;
-}
+ 
 
  public function setCBATOSCAPTUREDAYS($CBATOS_CAPTUREDAYS)
 {
@@ -114,11 +105,7 @@ $this->CBATOS_CUSTOMERMAIL = $CBATOS_CUSTOMERMAIL;
 return $this;
 }
 
-public function setCBATOSCUSTOMERID($CBATOS_CUSTOMERID)
-{
-$this->CBATOS_CUSTOMERID = $CBATOS_CUSTOMERID;
-return $this;
-}
+ 
 
 public function setCBATOSCUSTOMERIP($CBATOS_CUSTOMERIP)
 {
@@ -126,11 +113,7 @@ $this->CBATOS_CUSTOMERIP = $CBATOS_CUSTOMERIP;
 return $this;
 }
 
-public function setCBATOSPATHBIN($CBATOS_PATHBIN)
-{
-$this->CBATOS_PATHBIN = $CBATOS_PATHBIN;
-return $this;
-}
+ 
 
 public function setCBATOSMODEDEBUG($CBATOS_MODEDEBUG)
 {
