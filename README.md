@@ -1,4 +1,4 @@
--- Attention !! Avant d'installer ce module assurez vous que votre hébergeur autorise la fonction EXEC() sans quoi vous ne pourrez pas faire fonctionner le script ATOS
+﻿-- Attention !! Avant d'installer ce module assurez vous que votre hébergeur autorise la fonction EXEC() sans quoi vous ne pourrez pas faire fonctionner le script ATOS
 
 -- WARNING !! Before you install this module, pls check your hosting provider if function EXEC() is activate if not you can not use Atos SIPS
 
@@ -43,7 +43,10 @@ Finaliser un contrat de vente à distance auprès de votre banque et signer avec
 
 ```
 Pour installer le module cbatos, téléchargez l'archive et décompressez la dans /local/modules
-Ensuite vous devez transférer les fichiers du template dans votre template (atos.html et result.html)
+Ensuite vous devez Copier le répertoire présent dans templates/frontoffice du module dans le repertoire templates/frontoffice de Thelia
+Uploader votre fichier xxx.certif que votre banque vous à communiquer dans le repertoire PARM du module
+Uploader le fichier parmcom.idmachand que votre baque vous à fournis dans le répertoire PARM
+il vous suffira ensuite d'indiquer le IDMARCHAND dans le menu configurer du module (depuis votre backoffice) . 
 ```
 
 `Utilisation`
@@ -51,21 +54,25 @@ Ensuite vous devez transférer les fichiers du template dans votre template (ato
 Pour utiliser le module cbatos, allez dans le back-office, onglet Modules, et activez-le, puis cliquez sur "Configurer" sur la ligne du module. puis renseigner :
 
 * Votre numéro de marchand
-* Url de retour client : http://***.******.**/cbatos/manuel
-* Url de retour atos IPN : http://***.******.**/cbatos/answer
 * Nombre de jour pour la capture du paiement (Différé ou pas)
-* Si vous souhaite envoyez à atos ou pas : Mail, Id, Ip (Client)
-* Le `pathBin`  (le chemin absolu du module) ex : /home/site/html/local/modules/CBatos/
+* Si vous souhaite envoyez à atos ou pas : Mail, Ip (Client)
 * Mode DEBUG (En production obligatoirement à NON)
 ```
 `Intégration`
 ```
-Ce module utilise deux pages:
+Ce module utilise un template indépendant (présent dans le répertoire templates/FrontOffice du module ) :
 
-- atos.html :  page qui affiche les boutons de paiment.  - result.html : page qui affiche le résultat de la transaction.  
+Il vous faut UPLOADED le repertoire du template (module-atos) directement dans le répertoire templates/frontoffice de THELIA.
 ```
 `PARAMETRE DE TESTE `
 ```
+Par default le fichier:
+
+certif.fr013044876511111
+parmcom.013044876511111
+
+sont fournis à titre d'exemple, ceci étant des fichiers fournis par le crédit agricole pour tester le fonctionnement de la plateforme
+
 Numéro de marchand : 013044876511111
 ```
 
