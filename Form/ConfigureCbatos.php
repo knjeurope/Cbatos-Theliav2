@@ -91,33 +91,6 @@ class ConfigureCbatos extends BaseForm
                                         new NotBlank()
                                 )
                         ))
-
-->add('Customermail', 'text', array(
-                                'label' => Translator::getInstance()->trans('Customermail'),
-                                'label_attr' => array(
-                                        'for' => 'Customermail'
-                                ),
-                'data' => (null === $values ?'':$values["CBATOS_CUSTOMERMAIL"]),
-                'constraints' => array(
-                                        new NotBlank()
-                                )
-                        ))
-
- 
-
-->add('Customerip', 'text', array(
-                                'label' => Translator::getInstance()->trans('Customerip'),
-                                'label_attr' => array(
-                                        'for' => 'Customerip'
-                                ),
-                'data' => (null === $values ?'':$values["CBATOS_CUSTOMERIP"]),
-                'constraints' => array(
-                                        new NotBlank()
-                                )
-                        ))
-
- 
-
 ->add('Modedebug', 'text', array(
                                 'label' => Translator::getInstance()->trans('Modedebug'),
                                 'label_attr' => array(

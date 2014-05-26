@@ -79,37 +79,11 @@
 
 
 
-{form_field form=$form field="Customermail"}
-        <div class="form-group {if $error}has-error{/if}">
-        <label for="{$label_attr.for}" class="control-label">
-{$label} :
-</label>
-
-<select name="{$name}" id="{$label_attr.for}" class="form-control">
-  <option value="1" {if $value eq "1"}selected="selected"{/if}>{intl l="NO" d='cbatos.ai'}</option>
-  <option value="2" {if $value eq "2"}selected="selected"{/if}>{intl l="YES" d='cbatos.ai'}</option>
-
-</select>
-</div>
-{/form_field}
 
 
  
 
 
-{form_field form=$form field="Customerip"}
-        <div class="form-group {if $error}has-error{/if}">
-        <label for="{$label_attr.for}" class="control-label">
-{$label} :
-</label>
-
-<select name="{$name}" id="{$label_attr.for}" class="form-control">
-  <option value="1" {if $value eq "1"}selected="selected"{/if}>{intl l="NO" d='cbatos.ai'}</option>
-  <option value="2" {if $value eq "2"}selected="selected"{/if}>{intl l="YES" d='cbatos.ai'}</option>
-
-</select>
-</div>
-{/form_field}
 
  
 

@@ -22,10 +22,6 @@ function save()
              	 
 				->setCBATOSCAPTUREDAYS($vform->get('Capturedays')->getData())
 				->setCBATOSDEVISES($vform->get('Devises')->getData())
-				->setCBATOSCUSTOMERMAIL($vform->get('Customermail')->getData())
-				 
-				->setCBATOSCUSTOMERIP($vform->get('Customerip')->getData())
-				 
 				->setCBATOSMODEDEBUG($vform->get('Modedebug')->getData())
                 ->write(Cbatos::JSON_CONFIG_PATH)
                 ;

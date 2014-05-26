@@ -99,19 +99,7 @@ $this->CBATOS_DEVISES = $CBATOS_DEVISES;
 return $this;
 }
 
- public function setCBATOSCUSTOMERMAIL($CBATOS_CUSTOMERMAIL)
-{
-$this->CBATOS_CUSTOMERMAIL = $CBATOS_CUSTOMERMAIL;
-return $this;
-}
 
- 
-
-public function setCBATOSCUSTOMERIP($CBATOS_CUSTOMERIP)
-{
-$this->CBATOS_CUSTOMERIP = $CBATOS_CUSTOMERIP;
-return $this;
-}
 
  
 

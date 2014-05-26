@@ -1,0 +1,67 @@
+       {extends file="layout.tpl"}
+       {block name='no-return-functions' append}
+    
+    {$page_title = {intl l="Payment by credit card" d="cbatos.fo.module_atos"}}
+ 
+{/block}
+       
+       {* Breadcrumb *}
+{block name='no-return-functions' append}
+    {$breadcrumbs = []}
+  
+        {$breadcrumbs[] = ['title' => {intl l="Payment by credit card" d="cbatos.fo.module_atos"}]}
+    
+{/block}
+
+
+  
+                         
+{block name="main-content"} 
+ <div class="main-container col1-layout">
+            <div class="container">
+                <div class="container-inner">
+                    <div class="main">
+                        {include file="assets/inc/breadcrumb.tpl"}
+<div class="col-main">
+                                                        	     
+     <div class="page-title">
+        <h1>{intl l="Payment by credit card" d="cbatos.fo.module_atos"}</h1>
+    </div>
+<div class="std"> 
+<table border="0" align="center" cellspacing="0" class="table">
+   
+  <tr>
+   
+   <td class="table"> 
+    
+    {loop type="order" name="payementatos" id="$order_id" limit="1"}
+    <div class="alert alert-info">
+<table width="100%" border="0" >
+      <tr>
+        <td  >{intl l="Order Id" d="cbatos.fo.module_atos"} : </td>
+        <td  ><b>{$REF}</b> </td>
+      </tr>
+      <tr>
+        <td >{intl l="Total for paid" d="cbatos.fo.module_atos"} : </td>
+        <td ><b>{$TOTAL_TAXED_AMOUNT|number_format:2:",":"."} {loop type="currency" name="order-currency" id=$CURRENCY}{$SYMBOL}{/loop}</b></td>
+      </tr>
+    </table>
+    </div>
+{/loop}
+      {$ERRORATOS nofilter}
+{$MESSAGE nofilter} 
+</td> 
+  </tr>
+</table>
+	<div class="alert alert-danger">
+    {intl l="You will be redirected to the secure server of our bank, in order to make your payment by credit card, once completed you will immediately confirm your order you can print." d="cbatos.fo.module_atos"}
+    </div>
+ </div>                        </div>
+
+ 
+                    </div>
+                </div>
+            </div>
+        </div>
+{/block}
+  

@@ -17,9 +17,7 @@ interface ConfigInterface
   
  public function setCBATOSCAPTUREDAYS($CBATOS_CAPTUREDAYS);
 public function setCBATOSDEVISES($CBATOS_DEVISES);
-public function setCBATOSCUSTOMERMAIL($CBATOS_CUSTOMERMAIL);
- public function setCBATOSCUSTOMERIP($CBATOS_CUSTOMERIP);
-  
+
 public function setCBATOSMODEDEBUG($CBATOS_MODEDEBUG);
 
 }
