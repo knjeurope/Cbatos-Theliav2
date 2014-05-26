@@ -18,7 +18,9 @@ use Thelia\Controller\BaseController;
 use Thelia\Tools\Redirect;
  use Thelia\Core\Routing\RewritingRouter;
  use Thelia\Controller\Front\BaseFrontController;
- 
+ //Add missing class
+ use Thelia\Model\Message;
+ use Thelia\Model\MessageQuery;
  
 class Cbatos extends AbstractPaymentModule 
 {
