@@ -15,6 +15,8 @@ use Thelia\Core\Template\TemplateDefinition;
 use Thelia\Model\Base\Template;
 use Thelia\Model\ModuleImageQuery;
 use Thelia\Model\Order;
+use Thelia\Model\Message;
+use Thelia\Model\MessageQuery;
 use Thelia\Module\AbstractPaymentModule;
 use Thelia\Module\BaseModule;
 use Thelia\Module\PaymentModuleInterface;
