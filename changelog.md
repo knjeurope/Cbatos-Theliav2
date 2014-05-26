@@ -1,4 +1,14 @@
-﻿-- V 1.5
+﻿-- V 1.6
+++ Change payment call instance
+++ Simplify admin setup
+++ Change Template model now just upload order-payment.html in your template file activated in your thelia
+++ All return url and Path for requested file ... is auto define just check chmod and your certificat file
+++ Page choose credit card is now full translated ... Use thelia translator for add language or modify
+-- Now ip and mail customer is still sent to atos that for you secure and for one secure transaction .
+++ Fixed major bug
+++ Now you can refresh page payment not create new order, install call is routed
+
+-- V 1.5
 ++ Code optimization 
 ++ More simplified installation 
 ++ autodetection API Request and Responses need to specify the path 

@@ -5,7 +5,8 @@
 
 
 ﻿### Module de paiement Carte Bancaire ATOS for Thelia V2
-######Compatible Version 2.0.1 - Mise à jour le 15 Mai 2014######
+######Compatible Version 2.0.1 - Mise à jour le 26 Mai 2014######
+###MODULE VERSION 1.6###
 
 
 __Français (Fr_fr) :__
@@ -118,10 +119,7 @@ Type de carte | Numéro | Expiration | Cvv
 VISA|4974934125497800|09-2018|255
 
 * * * 
-
-___teste___
-
-
+ 
 
 
 
