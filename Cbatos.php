@@ -16,11 +16,10 @@ use Thelia\Tools\URL;
 use Symfony\Component\Routing\Router;
 use Thelia\Controller\BaseController;
 use Thelia\Tools\Redirect;
- use Thelia\Core\Routing\RewritingRouter;
- use Thelia\Controller\Front\BaseFrontController;
- //Add missing class
- use Thelia\Model\Message;
- use Thelia\Model\MessageQuery;
+use Thelia\Core\Routing\RewritingRouter;
+use Thelia\Controller\Front\BaseFrontController;
+use Thelia\Model\Message;
+use Thelia\Model\MessageQuery;
  
 class Cbatos extends AbstractPaymentModule 
 {
@@ -50,9 +49,8 @@ if (null === MessageQuery::create()->findOneByName(self::CONFIRMATION_MESSAGE_NA
                 ->setSubject('Ticket de paiement carte bancaire - Commande N° {$order_ref}')
                 ->setHtmlMessage(file_get_contents($email_templates_dir.'fr.html'))
                 ->setTextMessage(file_get_contents($email_templates_dir.'fr.txt'))
-                ->save()
-            ;
-        }
+                ->save();
+      		}
 
 $module = $this->getModuleModel();
 if (ModuleImageQuery::create()->filterByModule($module)->count() == 0) {
@@ -69,8 +67,7 @@ public function destroy(ConnectionInterface $con = null, $deleteModuleData = fal
   public function pay(Order $order)
     {
  
-		 //Redirect to API ATOS for Invocation Request Binary
-		Redirect::exec(URL::getInstance()->absoluteUrl("/cbatos/paid/".$order->getId()));
+ 		Redirect::exec(URL::getInstance()->absoluteUrl("/cbatos/paid/".$order->getId()));
  		 
     }
 	
