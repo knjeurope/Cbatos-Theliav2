@@ -1,4 +1,10 @@
-﻿-- V 1.6
+-- V 1.7 (In progress)
+++ Generating Return url with use Thelia Inspector
+++ Create file missing in parm when you register config in module configuration
+++ Add multiple demo certificat 
+++ Now compatible with Etransactions, Sherlocks, Scellius, Webaffaire, Citelis, Cyberplus, Smc, ElysNet, Sogenactif
+
+-- V 1.6
 ++ Change payment call instance
 ++ Simplify admin setup
 ++ Change Template model now just upload order-payment.html in your template file activated in your thelia
