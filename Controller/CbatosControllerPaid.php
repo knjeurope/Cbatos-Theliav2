@@ -14,6 +14,9 @@ use Thelia\Core\Event\Order\OrderEvent;
 use Thelia\Model\OrderStatus;
 use Thelia\Model\OrderStatusQuery;
 use Thelia\Core\Template\TemplateHelper;
+use Thelia\Tools\URL;
+use Symfony\Component\Routing\Router; 
+
 class CbatosControllerPaid extends BaseFrontController
 {
 //START CLASS DO NOT MODIFY
@@ -29,8 +32,10 @@ protected $config;
 /* READ CONFIG FILE ATOS THELIA */
 $c = Config::read(Cbatos::JSON_CONFIG_PATH);
 /* -----------END --------------*/	
+// Selector Routing //
+$myRouter = $this->container->get('router.Cbatos');
 	
-
+ 
 
 /* CREATE PARM VARS WITH ALL NEEDED INFORMATION BY ATOS API REQUEST */
 $parm="merchant_id=".$c["CBATOS_MERCHANTID"]; //Contract Number with Bank
@@ -44,19 +49,19 @@ $parm="$parm customer_ip_address=".$_SERVER['REMOTE_ADDR']; // Customer ip
 $parm="$parm language=".$this->getRequest()->getSession()->getLang()->getCode();
 $parm="$parm order_id=".$order->getId();
 $parm="$parm pathfile=".__DIR__."/../parm/pathfile.".$c["CBATOS_SIPSSOLUTIONS"]; //Auto search pathfile
-$parm="$parm normal_return_url=http://".$_SERVER['SERVER_NAME']."/cbatos/manuel"; //Auto defined return url
-$parm="$parm cancel_return_url=http://".$_SERVER['SERVER_NAME']."/cbatos/manuel"; //Auto defined return url
-$parm="$parm automatic_response_url=http://".$_SERVER['SERVER_NAME']."/cbatos/answer"; //Auto defined return url ipn
+$parm="$parm normal_return_url=".URL::getInstance()->absoluteUrl($myRouter->generate("Cbatos.manuel", array(), Router::ABSOLUTE_URL)).""; //Auto defined return url
+$parm="$parm cancel_return_url=".URL::getInstance()->absoluteUrl($myRouter->generate("Cbatos.manuel", array(), Router::ABSOLUTE_URL)).""; //Auto defined return url
+$parm="$parm automatic_response_url=".URL::getInstance()->absoluteUrl($myRouter->generate("Cbatos.answer", array(), Router::ABSOLUTE_URL)).""; //Auto defined return url ipn
 $parm="$parm transaction_id=".self::harmonise($order->getId(),'numeric',6); // Transaction ID
 $path_bin = __DIR__."/../bin/request"; //Auto search bin request
 
 
 
 $result=exec("$path_bin $parm");
+
 $tableau = explode ("!", "$result");
 if (empty($tableau[3]))  { 
-echo 'Français : <br>Il semblerait que nous rencontrions un problème avec l\'appel du script request merci de vérifier que:<br>Le fichier soit bien présent<br>Que le Chmod est bien 755<br><br>Pour rappel voici le chemin absolue que nous essayons d\'appeler<br>'.$path_bin.'<br>ATTENTION : Nous vous rappelons que le fichier REQUEST et RESPONSE Doivent être uploader en MODE BINARY<br>Sans quoi le script ne pourras pas fonctionner <br><br><hr>English <br>It seems that we encounter a problem with the script call request thank you to verify that:<br>The file is indeed present<br>The chmod is 755<br>As a reminder here is the absolute way that we try to call<br>'.$path_bin.'<br>ATTENTION: Please note that the REQUEST and RESPONSE file uploader Must be in BINARY MODE<br>Otherwise the script will not be able to function'; 
- 
+var_dump($result); 
 exit;
 }
  else   {

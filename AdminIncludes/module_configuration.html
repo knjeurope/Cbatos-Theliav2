@@ -8,13 +8,15 @@
 </div>
 {elseloop rel="checkrights"}
 <h2>{intl l="Atos setup" d='cbatos.ai'}</h2>
-<div class="form-container general-block-decorator">
+<div class="form-container general-block-decorator col-md-8">
+<div class="table table-condensed">
+<h3>{intl l="Processor configurator and Generate required files " d='cbatos.ai'}</h3>
 {form name="cbatos.configure"}
 	<form action="{url path="/admin/module/Cbatos/saveconfig"}" method="POST" {form_enctype form=$form}>
 		{form_hidden_fields form=$form}
 
         {form_field form=$form field="MerchantId"}
-        <div class="form-group {if $error}has-error{/if}">
+        <div class="form-group {if $error}has-error{/if} col-md-3">
             <label for="{$label_attr.for}" class="control-label">
                 {$label} :
             </label>
@@ -25,7 +27,7 @@
         
         
         {form_field form=$form field="SipsSolutions"}
-        <div class="form-group {if $error}has-error{/if}">
+        <div class="form-group {if $error}has-error{/if} col-md-3">
         <label for="{$label_attr.for}" class="control-label">
 {$label} :
 </label>
@@ -33,6 +35,14 @@
 <select name="{$name}" id="{$label_attr.for}" class="form-control">
   <option value="etransactions" {if $value eq "etransactions"}selected="selected"{/if}>{intl l="Crédit agricole - e Transactions" d='cbatos.ai'} </option>
    <option value="sherlocks" {if $value eq "sherlocks"}selected="selected"{/if}>{intl l="Lcl Crédit Lyonnais - Sherlocks" d='cbatos.ai'} </option>
+   <option value="citelis" {if $value eq "citelis"}selected="selected"{/if}>{intl l="Crédit mutuel - Citelis" d='cbatos.ai'} </option>
+   <option value="cyberplus" {if $value eq "cyberplus"}selected="selected"{/if}>{intl l="Banque populaire - Cyberplus" d='cbatos.ai'} </option>
+   <option value="elysnet" {if $value eq "elysnet"}selected="selected"{/if}>{intl l="HSBC - Elysnet" d='cbatos.ai'} </option>
+   <option value="mercanet" {if $value eq "mercanet"}selected="selected"{/if}>{intl l="BNP Paribas - Mercanet" d='cbatos.ai'} </option>
+   <option value="scelliusnet" {if $value eq "scelliusnet"}selected="selected"{/if}>{intl l="Banque postale - ScelliuisNet" d='cbatos.ai'} </option>
+   <option value="sogenactif" {if $value eq "sogenactif"}selected="selected"{/if}>{intl l="Société Générale - Sogenactif" d='cbatos.ai'} </option>
+   <option value="smc" {if $value eq "smc"}selected="selected"{/if}>{intl l="Société marseillaise civile - SMC" d='cbatos.ai'} </option>
+   <option value="webaffaires" {if $value eq "webaffaires"}selected="selected"{/if}>{intl l="Crédit du nord - WebAffaires" d='cbatos.ai'} </option>
 
 
 </select>
@@ -45,7 +55,7 @@
  
 
 {form_field form=$form field="Capturedays"}
-        <div class="form-group {if $error}has-error{/if}">
+        <div class="form-group {if $error}has-error{/if} col-md-3">
         <label for="{$label_attr.for}" class="control-label">
 {$label} :
 </label>
@@ -63,7 +73,7 @@
 {/form_field}
 
 {form_field form=$form field="Devises"}
-        <div class="form-group {if $error}has-error{/if}">
+        <div class="form-group {if $error}has-error{/if} col-md-3">
         <label for="{$label_attr.for}" class="control-label">
 {$label} :
 </label>
@@ -89,7 +99,7 @@
 
 
 {form_field form=$form field="Modedebug"}
-        <div class="form-group {if $error}has-error{/if}">
+        <div class="form-group {if $error}has-error{/if} col-md-3">
         <label for="{$label_attr.for}" class="control-label">
 {$label} :
 </label>
@@ -105,10 +115,44 @@
 
 
 
-		<div class="form-group">
+		<div class="form-group col-md-3" >
 			<button type="submit" name="save_mode" value="stay" class="form-submit-button btn btn-sm btn-default btn-success" title="{intl l="Save" d='cbatos.ai'}">{intl l="Save"} <span class="glyphicon glyphicon-ok"></span></button>
 		</div>
 	</form>
 {/form}
 </div>
+<hr />
+
+</div>
+
+<div class="form-container general-block-decorator col-md-4">
+<div class="form-group">
+<b>Certificat de démonstration :</b><br />
+ 	certif.fr.011223344551111<br />
+ 	certif.fr.013044876511111<br />
+ 	certif.fr.014022286611111<br />
+ 	certif.fr.014102450311111<br />
+	certif.fr.014141675911111<br />
+	certif.fr.014213245611111<br />
+	certif.fr.014295303911111<br />
+	certif.fr.029800266211111<br />
+	certif.fr.038862749811111<br />
+	certif.fr.082584341411111
+ </div>
+<div class="form-group">
+<b>Banque Compatible (SIPS) :</b><br />
+ 	(citelis) -> Crédit mutuel<br />
+ 	(cyberplus) -> Banque populaire<br />
+ 	(elysnet) -> Banque HSBC<br />
+ 	(etransations) -> Crédit agricole<br />
+	(mercanet) -> BNP Paribas<br />
+	(scelliusnet) -> La banque postale<br />
+	(scherlocks) -> Le LCL Crédit lyonnais<br />
+	(smc) -> Banque marseillaise civile<br />
+	(sogenactif) -> Société Générale<br />
+	(webaffaires) -> Crédit du nord
+</div>
+    
+</div>
+
 {/elseloop}
