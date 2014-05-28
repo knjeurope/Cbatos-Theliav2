@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+{if $TRANSACTION_REF} <div class="panel panel-default">
 <div class="panel-heading">{intl l="Clone Receipt Ticket Payment Credit card :" d='cbatos.ai'}</div>
 
 <div class="panel-body">
@@ -31,3 +31,6 @@
   </table>
 </div>
     </div>
+ {else}
+ {intl l="No transaction found for this order" d='cbatos.ai'}
+ {/if}
