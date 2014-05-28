@@ -24,6 +24,7 @@ protected $config;
 
  function paid($order_id)
 {
+	$myRouter = $this->container->get('router.Cbatos');
 	$order = OrderQuery::create()->findPk($order_id);
 if(empty($order)) {
 	echo 'Erreur, Demande de paiement non valide, OrderId inexistant...<br>Error, Payment request not valid, OrderId not found !';
@@ -37,7 +38,7 @@ if(empty($order)) {
 $c = Config::read(Cbatos::JSON_CONFIG_PATH);
 /* -----------END --------------*/	
 // Selector Routing //
-$myRouter = $this->container->get('router.Cbatos');
+
 	
  
 
@@ -56,7 +57,7 @@ $parm="$parm pathfile=".__DIR__."/../parm/pathfile.".$c["CBATOS_SIPSSOLUTIONS"];
 $parm="$parm normal_return_url=".URL::getInstance()->absoluteUrl($myRouter->generate("Cbatos.manuel", array(), Router::ABSOLUTE_URL)).""; //Auto defined return url
 $parm="$parm cancel_return_url=".URL::getInstance()->absoluteUrl($myRouter->generate("Cbatos.manuel", array(), Router::ABSOLUTE_URL)).""; //Auto defined return url
 $parm="$parm automatic_response_url=".URL::getInstance()->absoluteUrl($myRouter->generate("Cbatos.answer", array(), Router::ABSOLUTE_URL)).""; //Auto defined return url ipn
-$parm="$parm transaction_id=".self::harmonise($order->getId(),'numeric',6); // Transaction ID
+$parm="$parm transaction_id=".self::harmonise(date("is").$order->getId(),'numeric',6); // Transaction ID
 $path_bin = __DIR__."/../bin/request"; //Auto search bin request
 
 
@@ -64,11 +65,8 @@ $path_bin = __DIR__."/../bin/request"; //Auto search bin request
 $result=exec("$path_bin $parm");
 
 $tableau = explode ("!", "$result");
-if (empty($tableau[3]))  { 
-var_dump($result); 
-exit;
-}
- else   {
+
+ 
 // MODE DEBUG OR NO //
 if ($c["CBATOS_MODEDEBUG"] == "2") { $vars["ERRORATOS"] = $tableau[2]; } else { $vars["MESSAGE"] = $tableau[3]; }
 // RETRIEVE ANSWER RESPONSES CODE ATOS
@@ -77,7 +75,6 @@ $vars["CODEATOS"] = $tableau[1];
  
 return $this->render("order-payment", $vars);
 			
- }
 	
 }
 
