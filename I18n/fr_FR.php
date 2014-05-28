@@ -28,7 +28,7 @@ return array(
     'Hold card, Specials conditions' => 'Conserver la carte, conditions spéciales',
     'Insufficient funds or limit exceeded' => 'Fonds insuffisant ou plafond dépassé',
     'Invalid contract' => 'Contrat VAD invalide',
-    'Invalid transaction, check the parameters passed in 
+    'Invalid transaction, check the parameters passed in
 request' => 'Transaction invalide, Merci de contacter le commerçant .',
     'LE' => 'LE',
     'MONTANT' => 'MONTANT',

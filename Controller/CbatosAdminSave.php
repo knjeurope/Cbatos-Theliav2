@@ -7,21 +7,21 @@ use Thelia\Controller\Admin\BaseAdminController;
 use Cbatos\Model\Config;
 use Cbatos\Form\ConfigureCbatos;
 use Thelia\Tools\URL;
-use Symfony\Component\Routing\Router; 
+use Symfony\Component\Routing\Router;
 class CbatosAdminSave extends BaseAdminController
 {
 function save()
 {
 
-		$error_message="";
+        $error_message="";
         $conf = new Config();
         $form = new ConfigureCbatos($this->getRequest());
         $vform = $this->validateForm($form);
-		$conf->setCBATOSMERCHANTID($vform->get('MerchantId')->getData())
+        $conf->setCBATOSMERCHANTID($vform->get('MerchantId')->getData())
                 ->setCBATOSSIPSSOLUTIONS($vform->get('SipsSolutions')->getData())
-				->setCBATOSCAPTUREDAYS($vform->get('Capturedays')->getData())
-				->setCBATOSDEVISES($vform->get('Devises')->getData())
-				->setCBATOSMODEDEBUG($vform->get('Modedebug')->getData())
+                ->setCBATOSCAPTUREDAYS($vform->get('Capturedays')->getData())
+                ->setCBATOSDEVISES($vform->get('Devises')->getData())
+                ->setCBATOSMODEDEBUG($vform->get('Modedebug')->getData())
                 ->write(Cbatos::JSON_CONFIG_PATH);
 
 //Generate PathFile

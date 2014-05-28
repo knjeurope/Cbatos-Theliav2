@@ -28,7 +28,7 @@ return array(
     'Hold card, Specials conditions' => 'Hold card, Specials conditions',
     'Insufficient funds or limit exceeded' => 'Insufficient funds or limit exceeded',
     'Invalid contract' => 'Merchant account is not valid',
-    'Invalid transaction, check the parameters passed in 
+    'Invalid transaction, check the parameters passed in
 request' => 'Invalid transaction, check the parameters passed in request',
     'LE' => 'ON',
     'MONTANT' => 'AMOUNT',

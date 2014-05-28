@@ -8,7 +8,7 @@ use Thelia\Core\Translation\Translator;
 class Config implements ConfigInterface
 {
     protected $CBATOS_MERCHANTID=null;
-    
+
     public function __construct()
     {
         $config=null;
@@ -83,10 +83,6 @@ $this->CBATOS_SIPSSOLUTIONS = $CBATOS_SIPSSOLUTIONS;
 return $this;
 }
 
-  
-
- 
-
  public function setCBATOSCAPTUREDAYS($CBATOS_CAPTUREDAYS)
 {
 $this->CBATOS_CAPTUREDAYS = $CBATOS_CAPTUREDAYS;
@@ -98,10 +94,6 @@ return $this;
 $this->CBATOS_DEVISES = $CBATOS_DEVISES;
 return $this;
 }
-
-
-
- 
 
 public function setCBATOSMODEDEBUG($CBATOS_MODEDEBUG)
 {

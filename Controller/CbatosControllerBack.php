@@ -4,7 +4,6 @@ namespace Cbatos\Controller;
 
 use Cbatos\Cbatos;
 use Thelia\Controller\Front\BaseFrontController;
-use Thelia\Core\Event\Cart\CartEvent;
 use Thelia\Core\Event\TheliaEvents;
 use Thelia\Core\HttpFoundation\Response;
 use Thelia\Core\Translation\Translator;
@@ -38,23 +37,8 @@ $error = $tableau[2];
 $response_code = $tableau[11];
 $customer_id = $tableau[26];
 $order_id = $tableau[27];
-if ($response_code == "02") { $tradcode = Translator::getInstance()->trans("Contact your banque for ask add amount limit on your card"); }
-else if ($response_code == "03") { $tradcode = Translator::getInstance()->trans("Invalid contract"); }
-else if ($response_code == "04") { $tradcode = Translator::getInstance()->trans("Hold card"); }
-else if ($response_code == "05") { $tradcode = Translator::getInstance()->trans("Authorization declined"); }
-else if ($response_code == "07") { $tradcode = Translator::getInstance()->trans("Hold card, Specials conditions"); }
-else if ($response_code == "12") { $tradcode = Translator::getInstance()->trans("Invalid transaction, check the parameters passed in 
-request"); }
-else if ($response_code == "33") { $tradcode = Translator::getInstance()->trans("Card is expired"); }
-else if ($response_code == "34") { $tradcode = Translator::getInstance()->trans("Suspected fraud"); }
-else if ($response_code == "41") { $tradcode = Translator::getInstance()->trans("Card is lost"); }
-else if ($response_code == "43") { $tradcode = Translator::getInstance()->trans("Card stolen"); }
-else if ($response_code == "51") { $tradcode = Translator::getInstance()->trans("Insufficient funds or limit exceeded"); }
-else if ($response_code == "56") { $tradcode = Translator::getInstance()->trans("Card missing"); }
-else if ($response_code == "57") { $tradcode = Translator::getInstance()->trans("Not allowed to carrier transaction"); }
-else if ($response_code == "59") { $tradcode = Translator::getInstance()->trans("Suspected fraud"); }
-else if ($response_code == "17") { $tradcode = Translator::getInstance()->trans("Your transaction has been canceled by yourself"); }
-else { 
+if ($response_code == "02") { $tradcode = Translator::getInstance()->trans("Contact your banque for ask add amount limit on your card"); } elseif ($response_code == "03") { $tradcode = Translator::getInstance()->trans("Invalid contract"); } elseif ($response_code == "04") { $tradcode = Translator::getInstance()->trans("Hold card"); } elseif ($response_code == "05") { $tradcode = Translator::getInstance()->trans("Authorization declined"); } elseif ($response_code == "07") { $tradcode = Translator::getInstance()->trans("Hold card, Specials conditions"); } elseif ($response_code == "12") { $tradcode = Translator::getInstance()->trans("Invalid transaction, check the parameters passed in
+request"); } elseif ($response_code == "33") { $tradcode = Translator::getInstance()->trans("Card is expired"); } elseif ($response_code == "34") { $tradcode = Translator::getInstance()->trans("Suspected fraud"); } elseif ($response_code == "41") { $tradcode = Translator::getInstance()->trans("Card is lost"); } elseif ($response_code == "43") { $tradcode = Translator::getInstance()->trans("Card stolen"); } elseif ($response_code == "51") { $tradcode = Translator::getInstance()->trans("Insufficient funds or limit exceeded"); } elseif ($response_code == "56") { $tradcode = Translator::getInstance()->trans("Card missing"); } elseif ($response_code == "57") { $tradcode = Translator::getInstance()->trans("Not allowed to carrier transaction"); } elseif ($response_code == "59") { $tradcode = Translator::getInstance()->trans("Suspected fraud"); } elseif ($response_code == "17") { $tradcode = Translator::getInstance()->trans("Your transaction has been canceled by yourself"); } else {
 $tradcode = Translator::getInstance()->trans("unknown");
 }
 if(is_numeric($order_id))
@@ -65,13 +49,10 @@ $order = OrderQuery::create()->findPk($order_id);
 if (( $code == "" ) && ( $error == "" ) ) {
 $errormsg = "Error to call API RESPONSE ATOS<br>Execitable not found".$path_bin;
 echo $errormsg;
-}
-
-else if ($code != 0) {
+} elseif ($code != 0) {
 $errormsg = "Error in Call to API ATOS RESPONSE <br><br> Error :".$error;
 echo $errormsg;
-}
-else {
+} else {
 
 }
 
@@ -81,31 +62,30 @@ $info = Translator::getInstance()->trans("Your transaction is accept");
 //le statut ne se change pas par le retour client
 //mais par le retour IPN de ATOS (plus sécurisé)
 //on fait uniquement une redirection sur order placed
-	return $this->render("order-placed", 
-	array(
-	"placed_order_id" => $order_id,
-	));
+    return $this->render("order-placed",
+    array(
+    "placed_order_id" => $order_id,
+    ));
 
-} else if($response_code =="17") {
+} elseif ($response_code =="17") {
         $token=null;
         $order = $this->checkorder($order_id,$token);
-		$event = new OrderEvent($order);
+        $event = new OrderEvent($order);
         $event->setStatus(OrderStatusQuery::create()->findOneByCode(OrderStatus::CODE_CANCELED)->getId());
         $this->dispatch(TheliaEvents::ORDER_UPDATE_STATUS,$event);
-		return $this->render("order-failed", 
-	array(
-	"failed_order_id" => $order_id,
-	"refusmotif" => $tradcode
-	));
-}
-else
-{
-	return $this->render("order-failed", 
-	array(
-	"failed_order_id" => $order_id,
-	"refusmotif" => $tradcode
-	));
-	
+
+        return $this->render("order-failed",
+    array(
+    "failed_order_id" => $order_id,
+    "refusmotif" => $tradcode
+    ));
+} else {
+    return $this->render("order-failed",
+    array(
+    "failed_order_id" => $order_id,
+    "refusmotif" => $tradcode
+    ));
+
 }
 
 //return $this->render("result",
@@ -117,7 +97,7 @@ else
 
 public function checkorder($order_id, &$token)
     {
-    
+
 
         $customer_id = $this->getRequest()->getSession()->getCustomerUser()->getId();
         $order =OrderQuery::create()
@@ -129,5 +109,5 @@ public function checkorder($order_id, &$token)
 
         return $order;
     }
-	
+
 }

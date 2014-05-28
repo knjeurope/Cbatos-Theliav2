@@ -1,30 +1,20 @@
 <?php
 namespace Cbatos;
 use Cbatos\Model\Config;
-use Cbatos\Model\AtosTransactions;
 use Symfony\Component\HttpFoundation\Request;
 use Propel\Runtime\Connection\ConnectionInterface;
-use Thelia\Core\HttpFoundation\Response;
-use Thelia\Core\Template\TemplateDefinition;
-use Thelia\Model\Base\Template;
 use Thelia\Model\ModuleImageQuery;
 use Thelia\Model\Order;
 use Thelia\Module\AbstractPaymentModule;
-use Thelia\Module\BaseModule;
-use Thelia\Module\PaymentModuleInterface;
 use Thelia\Tools\URL;
-use Symfony\Component\Routing\Router;
-use Thelia\Controller\BaseController;
 use Thelia\Tools\Redirect;
-use Thelia\Core\Routing\RewritingRouter;
-use Thelia\Controller\Front\BaseFrontController;
 use Thelia\Model\Message;
 use Thelia\Model\MessageQuery;
 use Propel\Runtime\Propel;
 
-class Cbatos extends AbstractPaymentModule 
+class Cbatos extends AbstractPaymentModule
 {
-	
+
 const JSON_CONFIG_PATH = "/Config/config.json";
 const CONFIRMATION_MESSAGE_NAME = 'atos_payment_confirmation';
 
@@ -52,27 +42,25 @@ if (null === MessageQuery::create()->findOneByName(self::CONFIRMATION_MESSAGE_NA
                 ->setHtmlMessage(file_get_contents($email_templates_dir.'fr.html'))
                 ->setTextMessage(file_get_contents($email_templates_dir.'fr.txt'))
                 ->save();
-      		}
+              }
 
 $module = $this->getModuleModel();
 if (ModuleImageQuery::create()->filterByModule($module)->count() == 0) {
 $this->deployImageFolder($module, sprintf('%s/images', __DIR__), $con);
 }
 }
- 
 
   public function pay(Order $order)
     {
- 
- 		Redirect::exec(URL::getInstance()->absoluteUrl("/cbatos/paid/".$order->getId()));
- 		 
+
+        Redirect::exec(URL::getInstance()->absoluteUrl("/cbatos/paid/".$order->getId()));
+
     }
-	
+
     public function getRequest()
     {
         return $this->container->get('request');
     }
- 
 
 public function isValidPayment()
     {

@@ -14,7 +14,7 @@ interface ConfigInterface
      */
     public function setCBATOSMERCHANTID($CBATOS_MERCHANTID);
     public function setCBATOSSIPSSOLUTIONS($CBATOS_SIPSSOLUTIONS);
-  
+
  public function setCBATOSCAPTUREDAYS($CBATOS_CAPTUREDAYS);
 public function setCBATOSDEVISES($CBATOS_DEVISES);
 

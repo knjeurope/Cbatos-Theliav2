@@ -4,18 +4,12 @@ namespace Cbatos\Controller;
 
 use Cbatos\Cbatos;
 use Thelia\Controller\Front\BaseFrontController;
-use Thelia\Core\Event\Cart\CartEvent;
-use Thelia\Core\Event\TheliaEvents;
 use Thelia\Core\HttpFoundation\Response;
-use Thelia\Core\Translation\Translator;
 use Thelia\Model\OrderQuery;
 use Cbatos\Model\Config;
-use Thelia\Core\Event\Order\OrderEvent;
-use Thelia\Model\OrderStatus;
-use Thelia\Model\OrderStatusQuery;
 use Thelia\Core\Template\TemplateHelper;
 use Thelia\Tools\URL;
-use Symfony\Component\Routing\Router; 
+use Symfony\Component\Routing\Router;
 
 class CbatosControllerPaid extends BaseFrontController
 {
@@ -24,28 +18,24 @@ protected $config;
 
  function paid($order_id)
 {
-	$myRouter = $this->container->get('router.Cbatos');
-	$order = OrderQuery::create()->findPk($order_id);
-if(empty($order)) {
-	echo 'Erreur, Demande de paiement non valide, OrderId inexistant...<br>Error, Payment request not valid, OrderId not found !';
-	exit;
-	}
+    $myRouter = $this->container->get('router.Cbatos');
+    $order = OrderQuery::create()->findPk($order_id);
+if (empty($order)) {
+    echo 'Erreur, Demande de paiement non valide, OrderId inexistant...<br>Error, Payment request not valid, OrderId not found !';
+    exit;
+    }
 
-	//STARTING API REQUEST TO BANKING
-
+    //STARTING API REQUEST TO BANKING
 
 /* READ CONFIG FILE ATOS THELIA */
 $c = Config::read(Cbatos::JSON_CONFIG_PATH);
-/* -----------END --------------*/	
+/* -----------END --------------*/
 // Selector Routing //
-
-	
- 
 
 /* CREATE PARM VARS WITH ALL NEEDED INFORMATION BY ATOS API REQUEST */
 $parm="merchant_id=".$c["CBATOS_MERCHANTID"]; //Contract Number with Bank
 $parm="$parm merchant_country=fr"; // Country Merchant Acceptance
-$parm="$parm amount=".$order->getTotalAmount()*100; // Amount for paid 
+$parm="$parm amount=".$order->getTotalAmount()*100; // Amount for paid
 if ($c["CBATOS_CAPTUREDAYS"] > "0") { $parm="$parm capture_day=".$c["CBATOS_CAPTUREDAYS"];  } // Differed capture days
 $parm="$parm currency_code=".$c["CBATOS_DEVISES"]; // Currency
 $parm="$parm customer_email=".$this->getRequest()->getSession()->getCustomerUser()->getEmail(); // Customer email
@@ -60,22 +50,17 @@ $parm="$parm automatic_response_url=".URL::getInstance()->absoluteUrl($myRouter-
 $parm="$parm transaction_id=".self::harmonise(date("is").$order->getId(),'numeric',6); // Transaction ID
 $path_bin = __DIR__."/../bin/request"; //Auto search bin request
 
-
-
 $result=exec("$path_bin $parm");
 
 $tableau = explode ("!", "$result");
 
- 
 // MODE DEBUG OR NO //
 if ($c["CBATOS_MODEDEBUG"] == "2") { $vars["ERRORATOS"] = $tableau[2]; } else { $vars["MESSAGE"] = $tableau[3]; }
 // RETRIEVE ANSWER RESPONSES CODE ATOS
 $vars["CODEATOS"] = $tableau[1];
 
- 
 return $this->render("order-payment", $vars);
-			
-	
+
 }
 
   /**
@@ -90,7 +75,7 @@ return $this->render("order-payment", $vars);
 
         return $parser;
     }
-	 /**
+     /**
 * Render the given template, and returns the result as an Http Response.
 *
 * @param $templateName the complete template name, with extension
@@ -102,7 +87,7 @@ return $this->render("order-payment", $vars);
     {
         return Response::create($this->renderRaw($templateName, $args), $status);
     }
-	 /**
+     /**
 * Render the given template, and returns the result as a string.
 *
 * @param $templateName the complete template name, with extension
@@ -132,7 +117,7 @@ return $this->render("order-payment", $vars);
 
         return $data;
     }
-	
+
 //ARMONIZE FUNCTION DO NOT MODIFY
 public static function harmonise($value, $type, $len)
     {

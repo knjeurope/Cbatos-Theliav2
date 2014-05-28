@@ -55,12 +55,10 @@ $order = OrderQuery::create()->findPk($order_id);
 if (( $code == "" ) && ( $error == "" ) ) {
 $errormsg = "Error to call API RESPONSE ATOS<br>Execitable not found".$path_bin;
 echo $errormsg;
-}
-else if ($code != 0) {
+} elseif ($code != 0) {
 $errormsg = "Error in Call to API ATOS RESPONSE <br><br> Error :".$error;
 echo $errormsg;
-}
-else {
+} else {
 if ($response_code == "00") {
 $code = $response_code;
 $msg = "";
@@ -80,7 +78,6 @@ switch ($code) {
             }
 }
 }
-
 
 print($msg);
 exit;

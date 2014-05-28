@@ -11,7 +11,7 @@
   <route id="Cbatos.paid" path="/cbatos/paid/{order_id}" methods="GET">
 	    <default key="_controller">Cbatos\Controller\CbatosControllerPaid::paid</default>
   </route>
- 
+
   <route id="Cbatos.saveconfig" path="/admin/module/Cbatos/saveconfig" methods="POST">
         <default key="_controller">Cbatos\Controller\CbatosAdminSave::save</default>
   </route>

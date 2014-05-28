@@ -66,10 +66,6 @@ class ConfigureCbatos extends BaseForm
                                 )
                         ))
 
-             
-
-    
-
 ->add('Capturedays', 'text', array(
                                 'label' => Translator::getInstance()->trans('Capturedays'),
                                 'label_attr' => array(
