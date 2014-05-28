@@ -18,20 +18,12 @@ function resp()
 {
 $cb = Config::read(Cbatos::JSON_CONFIG_PATH);
 $c = AtosTransactions::read(Cbatos::JSON_CONFIG_PATH);
-$date = $_GET['DATA'];
+$date = $_POST['DATA'];
 $message="message=$date";
 $pathfile="pathfile=".__DIR__."/../parm/pathfile.".$cb["CBATOS_SIPSSOLUTIONS"]; //Auto search pathfile
 $path_bin = __DIR__."/../bin/response"; //Auto search bin request
 $result=exec("$path_bin $pathfile $message");
 $tableau = explode ("!", $result);
-
- 
-
-
-
-$tableau = explode ("!", $result);
-
-var_dump($tableau);
 $code = $tableau[1];
 $error = $tableau[2];
 $response_code = $tableau[11];
