@@ -38,7 +38,7 @@
                         <p>{$failed_order_message}</p>
                     {/if}
 
-                    <a href="{url path="/order/invoice"}" role="button" class="btn btn-checkout"><span>{intl l="Try again"}</span></a>
+                    <a href="{url path="/cbatos/paid/{$failed_order_id}"}" role="button" class="btn btn-checkout"><span>{intl l="Try again"}</span></a>
                 </div>
             </div>
 
