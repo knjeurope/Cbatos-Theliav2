@@ -31,7 +31,7 @@ $WpAtH = fopen(__DIR__.'/../parm/pathfile.'.$vform->get('SipsSolutions')->getDat
 ftruncate($WpAtH,0);
 fputs($WpAtH, '
 DEBUG!YES!
-D_LOGO!/logo/!
+D_LOGO!../../../logo/!
 D_PARM!'.__DIR__.'/../!
 F_DEFAULT!D_PARM!parm/parmcom.sherlocks!
 F_PARAM!D_PARM!parm/parmcom!
