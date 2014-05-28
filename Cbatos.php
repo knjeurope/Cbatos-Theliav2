@@ -1,8 +1,8 @@
 <?php
 namespace Cbatos;
 use Cbatos\Model\Config;
+use Cbatos\Model\AtosTransactions;
 use Symfony\Component\HttpFoundation\Request;
-
 use Propel\Runtime\Connection\ConnectionInterface;
 use Thelia\Core\HttpFoundation\Response;
 use Thelia\Core\Template\TemplateDefinition;
@@ -20,16 +20,18 @@ use Thelia\Core\Routing\RewritingRouter;
 use Thelia\Controller\Front\BaseFrontController;
 use Thelia\Model\Message;
 use Thelia\Model\MessageQuery;
- 
+use Propel\Runtime\Propel;
+
 class Cbatos extends AbstractPaymentModule 
 {
 	
 const JSON_CONFIG_PATH = "/Config/config.json";
 const CONFIRMATION_MESSAGE_NAME = 'atos_payment_confirmation';
-protected $_sKey;
-protected $_sUsableKey;
-protected $config;
 
+ protected $_sKey;
+    protected $_sUsableKey;
+
+    protected $config;
 
 public function postActivation(ConnectionInterface $con = null)
 {
@@ -57,12 +59,7 @@ if (ModuleImageQuery::create()->filterByModule($module)->count() == 0) {
 $this->deployImageFolder($module, sprintf('%s/images', __DIR__), $con);
 }
 }
-public function destroy(ConnectionInterface $con = null, $deleteModuleData = false)
-    {
-        if ($deleteModuleData) {
-            MessageQuery::create()->findOneByName(self::CONFIRMATION_MESSAGE_NAME)->delete();
-        }
-    }
+ 
 
   public function pay(Order $order)
     {

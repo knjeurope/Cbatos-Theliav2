@@ -25,6 +25,10 @@ protected $config;
  function paid($order_id)
 {
 	$order = OrderQuery::create()->findPk($order_id);
+if(empty($order)) {
+	echo 'Erreur, Demande de paiement non valide, OrderId inexistant...<br>Error, Payment request not valid, OrderId not found !';
+	exit;
+	}
 
 	//STARTING API REQUEST TO BANKING
 
@@ -47,7 +51,7 @@ $parm="$parm customer_email=".$this->getRequest()->getSession()->getCustomerUser
 $parm="$parm customer_id=".$this->getRequest()->getSession()->getCustomerUser()->getId(); //Customer Id
 $parm="$parm customer_ip_address=".$_SERVER['REMOTE_ADDR']; // Customer ip
 $parm="$parm language=".$this->getRequest()->getSession()->getLang()->getCode();
-$parm="$parm order_id=".$order->getId();
+$parm="$parm order_id=".$order_id;
 $parm="$parm pathfile=".__DIR__."/../parm/pathfile.".$c["CBATOS_SIPSSOLUTIONS"]; //Auto search pathfile
 $parm="$parm normal_return_url=".URL::getInstance()->absoluteUrl($myRouter->generate("Cbatos.manuel", array(), Router::ABSOLUTE_URL)).""; //Auto defined return url
 $parm="$parm cancel_return_url=".URL::getInstance()->absoluteUrl($myRouter->generate("Cbatos.manuel", array(), Router::ABSOLUTE_URL)).""; //Auto defined return url

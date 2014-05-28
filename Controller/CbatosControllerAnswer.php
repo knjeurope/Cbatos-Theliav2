@@ -16,14 +16,22 @@ protected $config;
 
 function resp()
 {
+$cb = Config::read(Cbatos::JSON_CONFIG_PATH);
 $c = AtosTransactions::read(Cbatos::JSON_CONFIG_PATH);
-$pathinstallmodule = $c["CBATOS_PATHBIN"];
-$date = $_POST['DATA'];
+$date = $_GET['DATA'];
 $message="message=$date";
-$pathfile="pathfile=".$c["CBATOS_PATHBIN"]."parm/pathfile.".$c["CBATOS_SIPSSOLUTIONS"];
-$path_bin = $c["CBATOS_PATHBIN"]."/bin/response";
+$pathfile="pathfile=".__DIR__."/../parm/pathfile.".$cb["CBATOS_SIPSSOLUTIONS"]; //Auto search pathfile
+$path_bin = __DIR__."/../bin/response"; //Auto search bin request
 $result=exec("$path_bin $pathfile $message");
 $tableau = explode ("!", $result);
+
+ 
+
+
+
+$tableau = explode ("!", $result);
+
+var_dump($tableau);
 $code = $tableau[1];
 $error = $tableau[2];
 $response_code = $tableau[11];
