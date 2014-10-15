@@ -35,7 +35,7 @@ $c = Config::read(Cbatos::JSON_CONFIG_PATH);
 /* CREATE PARM VARS WITH ALL NEEDED INFORMATION BY ATOS API REQUEST */
 $parm="merchant_id=".$c["CBATOS_MERCHANTID"]; //Contract Number with Bank
 $parm="$parm merchant_country=fr"; // Country Merchant Acceptance
-$parm="$parm amount=".$order->getTotalAmount()*100; // Amount for paid
+$parm="$parm amount=".round($order->getTotalAmount(),2)*100; // Amount for paid
 if ($c["CBATOS_CAPTUREDAYS"] > "0") { $parm="$parm capture_day=".$c["CBATOS_CAPTUREDAYS"];  } // Differed capture days
 $parm="$parm currency_code=".$c["CBATOS_DEVISES"]; // Currency
 $parm="$parm customer_email=".$this->getRequest()->getSession()->getCustomerUser()->getEmail(); // Customer email
